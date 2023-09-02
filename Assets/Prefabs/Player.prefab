@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1112686265296245563}
   - component: {fileID: 1112686265296245540}
-  - component: {fileID: 1112686265296245562}
+  - component: {fileID: 8876337449391633095}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -126,7 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd6485698208ac4aa71a38d1c5a1091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1112686265296245562
+  controlable: 1
+  beheavier: {fileID: 8876337449391633095}
+--- !u!114 &8876337449391633095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,6 +137,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1112686265296245541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93d5442f8e3334741acdb5930d71924e, type: 3}
+  m_Script: {fileID: 11500000, guid: 14d6d6570474d4246851af73756381b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
