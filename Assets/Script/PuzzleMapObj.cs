@@ -7,7 +7,7 @@ public class PuzzleMapObj : MonoBehaviour
 {
     [SerializeField] private bool controlable;
     [SerializeField] private bool blockObj;
-    [SerializeField] private PuzzleMapObjBeheavier beheavier;
+    [SerializeField] private PuzzleMapObjBehavior beheavier;
 
     public bool Controlable { get => controlable; set => controlable = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
@@ -59,6 +59,17 @@ public class PuzzleMapObj : MonoBehaviour
         if (!beBlock)
         {
             transform.position += moveVector;
+        }
+    }
+    public void PushWithVector(Vector3 pushVector)
+    {
+        Vector3 moveTarget = transform.position + pushVector;
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+        {
+            if (current.BlockObj)
+            {
+                current.MoveWithVector(pushVector);
+            }
         }
     }
 }
