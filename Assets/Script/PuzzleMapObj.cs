@@ -6,10 +6,11 @@ using UnityEngine.Events;
 public class PuzzleMapObj : MonoBehaviour
 {
     [SerializeField] private bool controlable;
+    [SerializeField] private bool blockObj;
     [SerializeField] private PuzzleMapObjBeheavier beheavier;
 
     public bool Controlable { get => controlable; set => controlable = value; }
-
+    public bool BlockObj { get => blockObj; set => blockObj = value; }
 
     public virtual void Up()
     {
@@ -30,11 +31,11 @@ public class PuzzleMapObj : MonoBehaviour
 
     public void MoveUp()
     {
-        transform.position += Vector3.forward * PuzzleManager.GRID_SIZE;
+        MoveWithVector(Vector3.forward * PuzzleManager.GRID_SIZE);
     }
     public void MoveDown()
     {
-        transform.position += Vector3.back * PuzzleManager.GRID_SIZE;
+        MoveWithVector(Vector3.back * PuzzleManager.GRID_SIZE);
     }
     public void MoveLeft()
     {
@@ -42,6 +43,23 @@ public class PuzzleMapObj : MonoBehaviour
     }
     public void MoveRight()
     {
-        transform.position += Vector3.right * PuzzleManager.GRID_SIZE;
+        MoveWithVector(Vector3.right * PuzzleManager.GRID_SIZE);
+    }
+    public void MoveWithVector(Vector3 moveVector)
+    {
+        Vector3 moveTarget = transform.position + moveVector;
+        bool beBlock = false;
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+        {
+            if (current.BlockObj)
+            {
+                Debug.LogError("Block by " + current);
+                beBlock = true;
+            }
+        }
+        if (!beBlock)
+        {
+            transform.position += moveVector;
+        }
     }
 }

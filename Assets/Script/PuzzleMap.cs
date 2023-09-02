@@ -10,10 +10,10 @@ public class PuzzleMap : MonoBehaviour
     public List<PuzzleMapObj> FindObjs(Vector3 pos)
     {
         List<PuzzleMapObj> result = new List<PuzzleMapObj>();
-        Vector3 coordinate = MathTools.FindCoordinate(pos - transform.position, PuzzleManager.GRID_SIZE);
+        Vector3 coordinate = MathTools.FindCoordinate(pos, PuzzleManager.GRID_SIZE);
         foreach (PuzzleMapObj current in objs)
         {
-            if (Vector2.Distance(current.transform.position, coordinate) < PuzzleManager.GRID_SIZE / 10)
+            if (Vector3.Distance(current.transform.position, coordinate) < PuzzleManager.GRID_SIZE / 10)
             {
                 result.Add(current);
             }
@@ -81,8 +81,8 @@ public class PuzzleMap : MonoBehaviour
             {
                 objs.Add(currentGrid);
 
-                Vector3 coordinate = MathTools.FindCoordinate(current.localPosition, PuzzleManager.GRID_SIZE);
-                current.localPosition = coordinate;
+                Vector3 coordinate = MathTools.FindCoordinate(current.position, PuzzleManager.GRID_SIZE);
+                current.position = coordinate;
             }
 
             UpdateGridsForTransform(current);
