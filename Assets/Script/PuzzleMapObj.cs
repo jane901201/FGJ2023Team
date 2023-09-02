@@ -10,6 +10,7 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private bool collectable;
     [SerializeField] private PuzzleMapObjBehavior beheavier;
     [SerializeField] private PuzzleMapObjBehavior passtiveBeheavier;
+    [SerializeField] private PuzzleMapObjBehavior fallBeheavier;
     [SerializeField] private CollectEvent powerUpFunction;
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
@@ -90,7 +91,7 @@ public class PuzzleMapObj : MonoBehaviour
         PuzzleManager.instance.CurrentMap.RemoveObj(this);
         Destroy(gameObject);
     }
-
+    
     public void MoveUp()
     {
         MoveWithVector(Vector3.forward * PuzzleManager.GRID_SIZE);
