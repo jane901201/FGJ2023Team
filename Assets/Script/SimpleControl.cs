@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SimpleControl : MonoBehaviour
 {
-    
+    public void MoveUp()
+    {
+
+    }
 }
