@@ -9,11 +9,12 @@ public static class MathTools
         int valueUnit = (int)(value / roundUnit + 0.5f + 10000) - 10000;
         return roundUnit * valueUnit;
     }
-    public static Vector2 FindCoordinate(Vector2 pos, float unit)
+    public static Vector3 FindCoordinate(Vector3 pos, float unit)
     {
-        Vector2 result = Vector3.zero;
+        Vector3 result = Vector3.zero;
         result.x = FloatRound(pos.x, unit);
         result.y = FloatRound(pos.y, unit);
+        result.z = FloatRound(pos.z, unit);
         return result;
     }
 }

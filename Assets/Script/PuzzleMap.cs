@@ -8,21 +8,7 @@ public class PuzzleMap : MonoBehaviour
 
     private Dictionary<Vector2, PuzzleMapGrid> gridDict = new Dictionary<Vector2, PuzzleMapGrid>();
 
-    public int OccupyNum
-    {
-        get
-        {
-            int result = 0;
-            foreach (PuzzleMapGrid current in grids)
-            {
-                if (current.IsOccupyed)
-                {
-                    result++;
-                }
-            }
-            return result;
-        }
-    }
+
 
     private void Start()
     {
@@ -51,7 +37,6 @@ public class PuzzleMap : MonoBehaviour
     public void UpdateGrids()
     {
         grids.Clear();
-        gridDict.Clear();
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform current = transform.GetChild(i);
@@ -61,7 +46,7 @@ public class PuzzleMap : MonoBehaviour
             {
                 grids.Add(currentGrid);
 
-                Vector2 coordinate = MathTools.FindCoordinate(current.localPosition, PuzzleManager.GRID_SIZE);
+                Vector3 coordinate = MathTools.FindCoordinate(current.localPosition, PuzzleManager.GRID_SIZE);
                 current.localPosition = coordinate;
             }
         }
