@@ -7,8 +7,10 @@ public class PuzzleMapObj : MonoBehaviour
 {
     [SerializeField] private bool controlable;
     [SerializeField] private bool blockObj;
+    [SerializeField] private bool collectable;
     [SerializeField] private PuzzleMapObjBehavior beheavier;
     [SerializeField] private PuzzleMapObjBehavior passtiveBeheavier;
+    [SerializeField] private PowerUp powerUpFunction;
 
     public bool Controlable { get => controlable; set => controlable = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
@@ -75,6 +77,15 @@ public class PuzzleMapObj : MonoBehaviour
             beheavier?.Right(this);
         }
     }
+    public void BeCollect()
+    {
+        powerUpFunction?.OnCollect(this);
+    }
+    public void DestroyInstance()
+    {
+        PuzzleManager.instance.CurrentMap.RemoveObj(this);
+        Destroy(gameObject);
+    }
 
     public void MoveUp()
     {
@@ -106,6 +117,10 @@ public class PuzzleMapObj : MonoBehaviour
         if (!beBlock)
         {
             transform.position += moveVector;
+            foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+            {
+                current.BeCollect();
+            }
         }
     }
     public void PushWithVector(Direction dir)

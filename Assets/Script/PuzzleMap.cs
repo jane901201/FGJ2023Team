@@ -6,6 +6,7 @@ public class PuzzleMap : MonoBehaviour
 {
     [SerializeField] private List<PuzzleMapObj> objs;
 
+    List<PuzzleMapObj> removedObjs = new List<PuzzleMapObj>();
 
     public List<PuzzleMapObj> FindObjs(Vector3 pos)
     {
@@ -20,46 +21,62 @@ public class PuzzleMap : MonoBehaviour
         }
         return result;
     }
+    public void RemoveObj(PuzzleMapObj removed)
+    {
+        removedObjs.Add(removed);
+    }
+    public void UpdateObjList()
+    {
+        objs.RemoveAll((PuzzleMapObj a) =>
+        {
+            return removedObjs.Contains(a);
+        });
+        removedObjs.Clear();
+    }
     #region Control
     public void Up()
     {
         foreach (PuzzleMapObj current in objs)
         {
-            if (current.Controlable)
+            if (current.Controlable && current.gameObject.activeInHierarchy)
             {
                 current.Up();
             }
         }
+        UpdateObjList();
     }
     public void Down()
     {
         foreach (PuzzleMapObj current in objs)
         {
-            if (current.Controlable)
+            if (current.Controlable && current.gameObject.activeInHierarchy)
             {
                 current.Down();
             }
         }
+        UpdateObjList();
     }
     public void Left()
     {
         foreach (PuzzleMapObj current in objs)
         {
-            if (current.Controlable)
+            if (current.Controlable && current.gameObject.activeInHierarchy)
             {
                 current.Left();
             }
         }
+        UpdateObjList();
     }
     public void Right()
     {
         foreach (PuzzleMapObj current in objs)
         {
-            if (current.Controlable)
+            if (current.Controlable && current.gameObject.activeInHierarchy)
             {
                 current.Right();
             }
         }
+        UpdateObjList();
     }
     #endregion
 #if UNITY_EDITOR
