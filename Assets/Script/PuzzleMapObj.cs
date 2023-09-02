@@ -39,7 +39,7 @@ public class PuzzleMapObj : MonoBehaviour
     }
     public void MoveLeft()
     {
-        transform.position += Vector3.left * PuzzleManager.GRID_SIZE;
+        MoveWithVector(Vector3.left * PuzzleManager.GRID_SIZE);
     }
     public void MoveRight()
     {
@@ -53,7 +53,6 @@ public class PuzzleMapObj : MonoBehaviour
         {
             if (current.BlockObj)
             {
-                Debug.LogError("Block by " + current);
                 beBlock = true;
             }
         }

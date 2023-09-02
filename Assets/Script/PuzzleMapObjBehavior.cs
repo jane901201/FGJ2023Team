@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PuzzleMapObjBeheavier : MonoBehaviour
+public class PuzzleMapObjBehavior : MonoBehaviour
 {
     public virtual void Up(PuzzleMapObj obj)
     {

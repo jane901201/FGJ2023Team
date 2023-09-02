@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleMoveBeheavier : PuzzleMapObjBeheavier
+public class SimpleMoveBehavior : PuzzleMapObjBehavior
 {
     public override void Up(PuzzleMapObj obj)
     {
