@@ -8,43 +8,72 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private bool controlable;
     [SerializeField] private bool blockObj;
     [SerializeField] private PuzzleMapObjBehavior beheavier;
+    [SerializeField] private PuzzleMapObjBehavior passtiveBeheavier;
 
     public bool Controlable { get => controlable; set => controlable = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
 
-    public virtual void DoDirection(Direction dir)
+    public virtual void DoDirection(Direction dir, bool isPasstive)
     {
         switch (dir)
         {
             case Direction.Up:
-                Up();
+                Up(isPasstive);
                 break;
             case Direction.Down:
-                Down();
+                Down(isPasstive);
                 break;
             case Direction.Left:
-                Left();
+                Left(isPasstive);
                 break;
             case Direction.Right:
-                Right();
+                Right(isPasstive);
                 break;
         }
     }
-    public virtual void Up()
+    public virtual void Up(bool isPasstive = false)
     {
-        beheavier?.Up(this);
+        if (isPasstive)
+        {
+            passtiveBeheavier?.Up(this);
+        }
+        else
+        {
+            beheavier?.Up(this);
+        }
     }
-    public virtual void Down()
+    public virtual void Down(bool isPasstive = false)
     {
-        beheavier?.Down(this);
+        if (isPasstive)
+        {
+            passtiveBeheavier?.Down(this);
+        }
+        else
+        {
+            beheavier?.Down(this);
+        }
     }
-    public virtual void Left()
+    public virtual void Left(bool isPasstive = false)
     {
-        beheavier?.Left(this);
+        if (isPasstive)
+        {
+            passtiveBeheavier?.Left(this);
+        }
+        else
+        {
+            beheavier?.Left(this);
+        }
     }
-    public virtual void Right()
+    public virtual void Right(bool isPasstive = false)
     {
-        beheavier?.Right(this);
+        if (isPasstive)
+        {
+            passtiveBeheavier?.Right(this);
+        }
+        else
+        {
+            beheavier?.Right(this);
+        }
     }
 
     public void MoveUp()
@@ -86,7 +115,7 @@ public class PuzzleMapObj : MonoBehaviour
         {
             if (current.BlockObj)
             {
-                current.DoDirection(dir);
+                current.DoDirection(dir, true);
             }
         }
     }
