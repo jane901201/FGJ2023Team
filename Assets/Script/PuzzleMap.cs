@@ -5,6 +5,7 @@ using UnityEngine;
 public class PuzzleMap : MonoBehaviour
 {
     [SerializeField] private List<PuzzleMapObj> objs;
+    [SerializeField] private int controlIndex;
 
     List<PuzzleMapObj> removedObjs = new List<PuzzleMapObj>();
 
@@ -34,11 +35,15 @@ public class PuzzleMap : MonoBehaviour
         removedObjs.Clear();
     }
     #region Control
+    public void SetControlIndex(int index)
+    {
+        controlIndex = index;
+    }
     public void Up()
     {
         foreach (PuzzleMapObj current in objs)
         {
-            if (current.Controlable && current.gameObject.activeInHierarchy)
+            if (current.CanControl(controlIndex) && current.gameObject.activeInHierarchy)
             {
                 current.Up();
             }
@@ -49,7 +54,7 @@ public class PuzzleMap : MonoBehaviour
     {
         foreach (PuzzleMapObj current in objs)
         {
-            if (current.Controlable && current.gameObject.activeInHierarchy)
+            if (current.CanControl(controlIndex) && current.gameObject.activeInHierarchy)
             {
                 current.Down();
             }
@@ -60,7 +65,7 @@ public class PuzzleMap : MonoBehaviour
     {
         foreach (PuzzleMapObj current in objs)
         {
-            if (current.Controlable && current.gameObject.activeInHierarchy)
+            if (current.CanControl(controlIndex) && current.gameObject.activeInHierarchy)
             {
                 current.Left();
             }
@@ -71,7 +76,7 @@ public class PuzzleMap : MonoBehaviour
     {
         foreach (PuzzleMapObj current in objs)
         {
-            if (current.Controlable && current.gameObject.activeInHierarchy)
+            if (current.CanControl(controlIndex) && current.gameObject.activeInHierarchy)
             {
                 current.Right();
             }

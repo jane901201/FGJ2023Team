@@ -5,16 +5,20 @@ using UnityEngine.Events;
 
 public class PuzzleMapObj : MonoBehaviour
 {
-    [SerializeField] private bool controlable;
+    [SerializeField] private int controlIndex = -1;
     [SerializeField] private bool blockObj;
     [SerializeField] private bool collectable;
     [SerializeField] private PuzzleMapObjBehavior beheavier;
     [SerializeField] private PuzzleMapObjBehavior passtiveBeheavier;
     [SerializeField] private PowerUp powerUpFunction;
 
-    public bool Controlable { get => controlable; set => controlable = value; }
+    public int ControlIndex { get => controlIndex; set => controlIndex = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
 
+    public bool CanControl(int controlIndex)
+    {
+        return this.controlIndex == controlIndex;
+    }
     public virtual void DoDirection(Direction dir, bool isPasstive)
     {
         switch (dir)
@@ -117,9 +121,12 @@ public class PuzzleMapObj : MonoBehaviour
         if (!beBlock)
         {
             transform.position += moveVector;
-            foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+            if (collectable)
             {
-                current.BeCollect();
+                foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+                {
+                    current.BeCollect();
+                }
             }
         }
     }
