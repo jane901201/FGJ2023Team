@@ -8,8 +8,6 @@ public class PuzzleMap : MonoBehaviour
 
     private Dictionary<Vector2, PuzzleMapGrid> gridDict = new Dictionary<Vector2, PuzzleMapGrid>();
 
-
-
     private void Start()
     {
         foreach (PuzzleMapGrid current in grids)
@@ -37,6 +35,11 @@ public class PuzzleMap : MonoBehaviour
     public void UpdateGrids()
     {
         grids.Clear();
+        UpdateGridsForTransform(transform);
+        UnityEditor.EditorUtility.SetDirty(gameObject);
+    }
+    public void UpdateGridsForTransform(Transform transform)
+    {
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform current = transform.GetChild(i);
@@ -49,8 +52,9 @@ public class PuzzleMap : MonoBehaviour
                 Vector3 coordinate = MathTools.FindCoordinate(current.localPosition, PuzzleManager.GRID_SIZE);
                 current.localPosition = coordinate;
             }
+
+            UpdateGridsForTransform(current);
         }
-        UnityEditor.EditorUtility.SetDirty(gameObject);
     }
 #endif
 }
