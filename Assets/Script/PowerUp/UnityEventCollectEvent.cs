@@ -7,9 +7,9 @@ public class UnityEventCollectEvent : CollectEvent
 {
     [SerializeField] private UnityEvent onPower;
 
-    public override void OnCollect(PuzzleMapObj obj)
+    public override void DoCollect(PuzzleMapObj collector, PuzzleMapObj obj)
     {
         onPower.Invoke();
-        base.OnCollect(obj);
+        base.DoCollect(collector, obj);
     }
 }
