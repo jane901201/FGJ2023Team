@@ -6,18 +6,18 @@ public class PushBehavior : PuzzleMapObjBehavior
 {
     public override void Up(PuzzleMapObj obj)
     {
-        obj.PushWithVector(Vector3.forward * PuzzleManager.GRID_SIZE);
+        obj.PushWithVector(Direction.Up);
     }
     public override void Down(PuzzleMapObj obj)
     {
-        obj.PushWithVector(Vector3.back * PuzzleManager.GRID_SIZE);
+        obj.PushWithVector(Direction.Down);
     }
     public override void Left(PuzzleMapObj obj)
     {
-        obj.PushWithVector(Vector3.left * PuzzleManager.GRID_SIZE);
+        obj.PushWithVector(Direction.Left);
     }
     public override void Right(PuzzleMapObj obj)
     {
-        obj.PushWithVector(Vector3.right * PuzzleManager.GRID_SIZE);
+        obj.PushWithVector(Direction.Right);
     }
 }

@@ -12,6 +12,24 @@ public class PuzzleMapObj : MonoBehaviour
     public bool Controlable { get => controlable; set => controlable = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
 
+    public virtual void DoDirection(Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.Up:
+                Up();
+                break;
+            case Direction.Down:
+                Down();
+                break;
+            case Direction.Left:
+                Left();
+                break;
+            case Direction.Right:
+                Right();
+                break;
+        }
+    }
     public virtual void Up()
     {
         beheavier?.Up(this);
@@ -61,14 +79,14 @@ public class PuzzleMapObj : MonoBehaviour
             transform.position += moveVector;
         }
     }
-    public void PushWithVector(Vector3 pushVector)
+    public void PushWithVector(Direction dir)
     {
-        Vector3 moveTarget = transform.position + pushVector;
+        Vector3 moveTarget = transform.position + dir.GetVector();
         foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
         {
             if (current.BlockObj)
             {
-                current.MoveWithVector(pushVector);
+                current.DoDirection(dir);
             }
         }
     }
