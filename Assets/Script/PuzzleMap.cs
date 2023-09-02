@@ -7,10 +7,6 @@ public class PuzzleMap : MonoBehaviour
     [SerializeField] private List<PuzzleMapObj> objs;
 
 
-    private void Start()
-    {
-
-    }
     public List<PuzzleMapObj> FindObjs(Vector3 pos)
     {
         List<PuzzleMapObj> result = new List<PuzzleMapObj>();
@@ -29,28 +25,40 @@ public class PuzzleMap : MonoBehaviour
     {
         foreach (PuzzleMapObj current in objs)
         {
-            current.Up();
+            if (current.Controlable)
+            {
+                current.Up();
+            }
         }
     }
     public void Down()
     {
         foreach (PuzzleMapObj current in objs)
         {
-            current.Down();
+            if (current.Controlable)
+            {
+                current.Down();
+            }
         }
     }
     public void Left()
     {
         foreach (PuzzleMapObj current in objs)
         {
-            current.Left();
+            if (current.Controlable)
+            {
+                current.Left();
+            }
         }
     }
     public void Right()
     {
         foreach (PuzzleMapObj current in objs)
         {
-            current.Right();
+            if (current.Controlable)
+            {
+                current.Right();
+            }
         }
     }
     #endregion
