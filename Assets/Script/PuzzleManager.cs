@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
 {
-    public const float GRID_SIZE = 10;
+    public const float GRID_SIZE = 1;
 
     public static PuzzleManager instance;
 
@@ -18,9 +18,5 @@ public class PuzzleManager : MonoBehaviour
     {
         instance = this;
         CurrentMap = defaultMap;
-    }
-    public void PrintCurrentOccupy()        //´ú¸Õ¥Î
-    {
-        Debug.LogError(defaultMap.OccupyNum);
     }
 }
