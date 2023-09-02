@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class PowerUp : MonoBehaviour
+public class CollectEvent : MonoBehaviour
 {
     [SerializeField] private bool destroyAfterCollect;
-    [SerializeField] private UnityEvent onPower;
 
-    public void OnCollect(PuzzleMapObj obj)
+    public virtual void OnCollect(PuzzleMapObj obj)
     {
-        onPower.Invoke();
         if (destroyAfterCollect)
         {
             obj.DestroyInstance();
