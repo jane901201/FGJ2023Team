@@ -6,6 +6,7 @@ public class PuzzleMap : MonoBehaviour
 {
     [SerializeField] private List<PuzzleMapObj> objs;
     [SerializeField] private int controlIndex;
+    [SerializeField] private List<List<GameObject>> enableWithControlIndexObjs;
 
     List<PuzzleMapObj> removedObjs = new List<PuzzleMapObj>();
 
@@ -38,6 +39,13 @@ public class PuzzleMap : MonoBehaviour
     public void SetControlIndex(int index)
     {
         controlIndex = index;
+        for (int i = 0; i < enableWithControlIndexObjs.Count; i++)
+        {
+            foreach (GameObject currentObj in enableWithControlIndexObjs[i])
+            {
+                currentObj.SetActive(i == controlIndex);
+            }
+        }
     }
     public void Up()
     {
