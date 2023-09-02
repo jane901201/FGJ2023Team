@@ -19,4 +19,25 @@ public class PuzzleManager : MonoBehaviour
         instance = this;
         CurrentMap = defaultMap;
     }
+    public void Up()
+    {
+        CurrentMap.Up();
+    }
+    public void Down()
+    {
+        CurrentMap.Down();
+    }
+    public void Left()
+    {
+        CurrentMap.Left();
+    }
+    public void Right()
+    {
+        CurrentMap.Right();
+    }
+    public void SetControlIndex(int index)
+    {
+        CurrentMap.SetControlIndex(index);
+    }
+
 }
