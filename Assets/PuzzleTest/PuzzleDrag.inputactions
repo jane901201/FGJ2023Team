@@ -1,0 +1,52 @@
+{
+    "name": "PuzzleDrag",
+    "maps": [
+        {
+            "name": "BrickDrag",
+            "id": "e3944c71-a2b9-4a11-bda1-1cecdc9189aa",
+            "actions": [
+                {
+                    "name": "Drag",
+                    "type": "Value",
+                    "id": "7b8652af-d3a6-40a7-b059-c5d4df331120",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Take",
+                    "type": "Button",
+                    "id": "a84673ae-2181-425f-bf3c-c684a56065fb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Release",
+                    "type": "Button",
+                    "id": "3a0115a2-392f-41d8-8afc-2b990dbb209c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": []
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "PuzzleDrag",
+            "bindingGroup": "PuzzleDrag",
+            "devices": [
+                {
+                    "devicePath": "<VirtualMouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
