@@ -92,6 +92,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7249069674430778920}
   - component: {fileID: 7249069674430778935}
+  - component: {fileID: 2171684214238196283}
+  - component: {fileID: 6577660783052199138}
   - component: {fileID: 1209152542593560532}
   m_Layer: 0
   m_Name: Box
@@ -128,12 +130,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd6485698208ac4aa71a38d1c5a1091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlable: 0
+  controlIndex: -1
   blockObj: 1
   collectable: 0
-  beheavier: {fileID: 1209152542593560532}
+  beheavier: {fileID: 2171684214238196283}
   passtiveBeheavier: {fileID: 1209152542593560532}
   powerUpFunction: {fileID: 0}
+--- !u!114 &2171684214238196283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7249069674430778934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153e276ce485c4aa9b10de1b84d86354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviors:
+  - {fileID: 6577660783052199138}
+  - {fileID: 1209152542593560532}
+--- !u!114 &6577660783052199138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7249069674430778934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376a32facaeef44f785ccb1d95f67120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1209152542593560532
 MonoBehaviour:
   m_ObjectHideFlags: 0
