@@ -9,12 +9,9 @@ public class CollectEvent : MonoBehaviour
 
     public void OnCollect(PuzzleMapObj collector, PuzzleMapObj obj)
     {
-        if (condition != null)
+        if (condition == null || condition.CheckObj(collector))
         {
-            if (condition.CheckObj(collector))
-            {
-                DoCollect(collector, obj);
-            }
+            DoCollect(collector, obj);
         }
     }
     public virtual void DoCollect(PuzzleMapObj collector, PuzzleMapObj obj)
