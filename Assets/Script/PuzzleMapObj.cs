@@ -81,9 +81,9 @@ public class PuzzleMapObj : MonoBehaviour
             beheavier?.Right(this);
         }
     }
-    public void BeCollect()
+    public void BeCollect(PuzzleMapObj collector)
     {
-        powerUpFunction?.OnCollect(this);
+        powerUpFunction?.OnCollect(collector, this);
     }
     public void DestroyInstance()
     {
@@ -125,7 +125,7 @@ public class PuzzleMapObj : MonoBehaviour
             {
                 foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
                 {
-                    current.BeCollect();
+                    current.BeCollect(this);
                 }
             }
         }

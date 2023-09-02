@@ -5,8 +5,19 @@ using UnityEngine;
 public class CollectEvent : MonoBehaviour
 {
     [SerializeField] private bool destroyAfterCollect;
+    [SerializeField] private PuzzleObjCondition condition; 
 
-    public virtual void OnCollect(PuzzleMapObj obj)
+    public void OnCollect(PuzzleMapObj collector, PuzzleMapObj obj)
+    {
+        if (condition != null)
+        {
+            if (condition.CheckObj(collector))
+            {
+                DoCollect(collector, obj);
+            }
+        }
+    }
+    public virtual void DoCollect(PuzzleMapObj collector, PuzzleMapObj obj)
     {
         if (destroyAfterCollect)
         {
