@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class PuzzleMap : MonoBehaviour
 {
     [SerializeField] private List<PuzzleMapObj> objs;
     [SerializeField] private int controlIndex;
-    [SerializeField] private List<List<GameObject>> enableWithControlIndexObjs;
+    [SerializeField] private List<IndexObjList> enableWithControlIndexObjs;
 
     List<PuzzleMapObj> removedObjs = new List<PuzzleMapObj>();
 
@@ -41,9 +41,9 @@ public class PuzzleMap : MonoBehaviour
         controlIndex = index;
         for (int i = 0; i < enableWithControlIndexObjs.Count; i++)
         {
-            foreach (GameObject currentObj in enableWithControlIndexObjs[i])
+            foreach (GameObject currentObj in enableWithControlIndexObjs[i].objs)
             {
-                currentObj.SetActive(i == controlIndex);
+                currentObj.SetActive(enableWithControlIndexObjs[i].index == controlIndex);
             }
         }
     }
@@ -119,4 +119,11 @@ public class PuzzleMap : MonoBehaviour
         }
     }
 #endif
+}
+
+[Serializable]
+public class IndexObjList
+{
+    public int index;
+    public List<GameObject> objs;
 }
