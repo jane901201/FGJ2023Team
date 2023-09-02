@@ -4,37 +4,61 @@ using UnityEngine;
 
 public class PuzzleMap : MonoBehaviour
 {
-    [SerializeField] private List<PuzzleMapGrid> grids;
+    [SerializeField] private List<PuzzleMapObj> objs;
 
-    private Dictionary<Vector2, PuzzleMapGrid> gridDict = new Dictionary<Vector2, PuzzleMapGrid>();
 
     private void Start()
     {
-        foreach (PuzzleMapGrid current in grids)
-        {
-            if (gridDict.ContainsKey(current.transform.localPosition))
-            {
-                Debug.LogError("REPEAT COORDINATE: " + current.gameObject);
-                continue;
-            }
 
-            gridDict.Add(current.transform.localPosition, current);
-        }
     }
-    public PuzzleMapGrid FindGrid(Vector2 pos)
+    public List<PuzzleMapObj> FindObjs(Vector3 pos)
     {
-        Vector2 coordinate = MathTools.FindCoordinate(pos - (Vector2)transform.position, PuzzleManager.GRID_SIZE);
-        if (!gridDict.ContainsKey(coordinate))
+        List<PuzzleMapObj> result = new List<PuzzleMapObj>();
+        Vector3 coordinate = MathTools.FindCoordinate(pos - transform.position, PuzzleManager.GRID_SIZE);
+        foreach (PuzzleMapObj current in objs)
         {
-            return null;
+            if (Vector2.Distance(current.transform.position, coordinate) < PuzzleManager.GRID_SIZE / 10)
+            {
+                result.Add(current);
+            }
         }
-        return gridDict[coordinate];
+        return result;
     }
+    #region Control
+    public void Up()
+    {
+        foreach (PuzzleMapObj current in objs)
+        {
+            current.Up();
+        }
+    }
+    public void Down()
+    {
+        foreach (PuzzleMapObj current in objs)
+        {
+            current.Down();
+        }
+    }
+    public void Left()
+    {
+        foreach (PuzzleMapObj current in objs)
+        {
+            current.Left();
+        }
+    }
+    public void Right()
+    {
+        foreach (PuzzleMapObj current in objs)
+        {
+            current.Right();
+        }
+    }
+    #endregion
 #if UNITY_EDITOR
     [ContextMenu("Update Grids")]
     public void UpdateGrids()
     {
-        grids.Clear();
+        objs.Clear();
         UpdateGridsForTransform(transform);
         UnityEditor.EditorUtility.SetDirty(gameObject);
     }
@@ -43,11 +67,11 @@ public class PuzzleMap : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform current = transform.GetChild(i);
-            PuzzleMapGrid currentGrid = current.GetComponent<PuzzleMapGrid>();
+            PuzzleMapObj currentGrid = current.GetComponent<PuzzleMapObj>();
 
             if (currentGrid != null)
             {
-                grids.Add(currentGrid);
+                objs.Add(currentGrid);
 
                 Vector3 coordinate = MathTools.FindCoordinate(current.localPosition, PuzzleManager.GRID_SIZE);
                 current.localPosition = coordinate;
