@@ -33,10 +33,11 @@ public class PuzzleMapObj : MonoBehaviour
     {
         get => isBoxObj; 
     }
+    private bool duringAnim;
 
     public bool CanControl(int controlIndex)
     {
-        return this.controlIndex == controlIndex;
+        return !duringAnim && this.controlIndex == controlIndex ;
     }
     public virtual void DoDirection(Direction dir, bool isPasstive)
     {
@@ -248,7 +249,6 @@ public class PuzzleMapObj : MonoBehaviour
         }
         if (!beBlock)
         {
-            Debug.LogError("J");
             Vector3 target = transform.position + moveVector * 3;
             jumpTrail.GenerateTrail(transform.position, target);
             StartCoroutine(JumpCoroutine());
@@ -269,6 +269,7 @@ public class PuzzleMapObj : MonoBehaviour
     {
         Vector3 moveTarget = jumpTrail.GetPosition(1);
         float passTime = 0;
+        duringAnim = true;
         while (passTime < 0.5f)
         {
             passTime += Time.deltaTime;
@@ -276,6 +277,7 @@ public class PuzzleMapObj : MonoBehaviour
             yield return null;
         }
         transform.position = moveTarget;
+        duringAnim = false;
         if (collectable)
         {
             foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
