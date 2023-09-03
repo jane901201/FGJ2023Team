@@ -14,6 +14,7 @@ public class DelayedEventTrigger : MonoBehaviour
     public CustomUnityEvent customEvent; // 自定义的UnityEvent
     public float delaySeconds = 2f; // 自定义的等待秒数
     public Text countdownText; // 用于显示倒计时的Text组件
+    [SerializeField] string countDownPrefixTxt = "Bug CountDown: ";
 
     private bool isEventTriggered = false;
     private float countdownTime;
@@ -47,7 +48,7 @@ public class DelayedEventTrigger : MonoBehaviour
     {
         if (countdownText != null)
         {
-            countdownText.text = "Bug CountDown: " + Mathf.Ceil(countdownTime).ToString();
+            countdownText.text = countDownPrefixTxt + Mathf.Ceil(countdownTime).ToString();
         }
     }
 }
