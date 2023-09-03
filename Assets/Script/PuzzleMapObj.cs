@@ -12,6 +12,7 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private PuzzleMapObjBehavior passtiveBeheavier;
     [SerializeField] private SingleBehavior undoBeheavier;
     [SerializeField] private SingleBehavior fallBeheavier;
+    [SerializeField] private SingleBehavior fillBeheavier;
     [SerializeField] private CollectEvent powerUpFunction;
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
@@ -85,11 +86,15 @@ public class PuzzleMapObj : MonoBehaviour
     }
     public void Undo()
     {
-        undoBeheavier.DoBehavior(this);
+        undoBeheavier?.DoBehavior(this);
     }
     public void Fall()
     {
-        fallBeheavier.DoBehavior(this);
+        fallBeheavier?.DoBehavior(this);
+    }
+    public void Fill()
+    {
+        fillBeheavier?.DoBehavior(this);
     }
     public void BeCollect(PuzzleMapObj collector)
     {

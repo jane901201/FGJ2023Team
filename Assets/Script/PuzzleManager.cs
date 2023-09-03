@@ -24,4 +24,29 @@ public class PuzzleManager : MonoBehaviour
         currentStage++;
         stageMaps[currentStage].gameObject.SetActive(true);
     }
+    public void Up()
+    {
+        CurrentMap.Up();
+    }
+    public void Down()
+    {
+        CurrentMap.Down();
+    }
+    public void Left()
+    {
+        CurrentMap.Left();
+    }
+    public void Right()
+    {
+        CurrentMap.Right();
+    }
+    public void Undo()
+    {
+        CurrentMap.Undo();
+    }
+    public void SwitchControl(int index)
+    {
+        CurrentMap.SetControlIndex(index);
+    }
+
 }
