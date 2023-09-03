@@ -132,9 +132,9 @@ public class PuzzleMapObj : MonoBehaviour
     /// <summary>
     /// TODO:
     /// </summary>
-    public void JumpBack(Vector3 dir)
+    public void JumpBack()
     {
-        JumpWithVector(dir * -1 * PuzzleManager.GRID_SIZE);
+        JumpWithVector(Vector3.left * PuzzleManager.GRID_SIZE);
     }
     public void MoveWithVector(Vector3 moveVector)
     {
