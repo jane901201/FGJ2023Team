@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 7252935679338510143}
   - component: {fileID: 7252935679338510141}
   m_Layer: 0
-  m_Name: MapFinalB-Mirage
+  m_Name: MapFinal-Mirage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
