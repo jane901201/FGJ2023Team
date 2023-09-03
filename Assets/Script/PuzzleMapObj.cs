@@ -161,10 +161,18 @@ public class PuzzleMapObj : MonoBehaviour
     }
     public void JumpWithVector(Vector3 moveVector)
     {
-        Vector3 checkMiddlePath = transform.position + moveVector;
-        Vector3 moveTarget = transform.position + moveVector * 2;
+        Vector3 checkMiddlePath1 = transform.position + moveVector;
+        Vector3 checkMiddlePath2 = transform.position + moveVector * 2;
+        Vector3 moveTarget = transform.position + moveVector * 3;
         bool beBlock = false;
-        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(checkMiddlePath))
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(checkMiddlePath1))
+        {
+            if (current.IsWallBlockObj)
+            {
+                beBlock = true;
+            }
+        }
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(checkMiddlePath2))
         {
             if (current.IsWallBlockObj)
             {
@@ -180,7 +188,7 @@ public class PuzzleMapObj : MonoBehaviour
         }
         if (!beBlock)
         {
-            transform.position += moveVector * 2;
+            transform.position += moveVector * 3;
             if (collectable)
             {
                 foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
