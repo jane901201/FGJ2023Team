@@ -21,6 +21,7 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private SingleBehavior escapeBehavier;
     [SerializeField] private SingleBehavior mergeBehavier;
     [SerializeField] private CollectEvent powerUpFunction;
+    [SerializeField] private Trail jumpTrail;
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
@@ -247,14 +248,10 @@ public class PuzzleMapObj : MonoBehaviour
         }
         if (!beBlock)
         {
-            transform.position += moveVector * 3;
-            if (collectable)
-            {
-                foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
-                {
-                    current.BeCollect(this);
-                }
-            }
+            Debug.LogError("J");
+            Vector3 target = transform.position + moveVector * 3;
+            jumpTrail.GenerateTrail(transform.position, target);
+            StartCoroutine(JumpCoroutine());
         }
     }
     public void PushWithVector(Direction dir)
@@ -265,6 +262,25 @@ public class PuzzleMapObj : MonoBehaviour
             if (current.BlockObj)
             {
                 current.DoDirection(dir, true);
+            }
+        }
+    }
+    public IEnumerator JumpCoroutine()
+    {
+        Vector3 moveTarget = jumpTrail.GetPosition(1);
+        float passTime = 0;
+        while (passTime < 0.5f)
+        {
+            passTime += Time.deltaTime;
+            transform.position = jumpTrail.GetPosition(passTime / 0.5f);
+            yield return null;
+        }
+        transform.position = moveTarget;
+        if (collectable)
+        {
+            foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+            {
+                current.BeCollect(this);
             }
         }
     }
