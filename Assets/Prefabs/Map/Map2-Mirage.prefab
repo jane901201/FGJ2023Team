@@ -549,19 +549,6 @@ MonoBehaviour:
   objs:
   - {fileID: 7252935680586629496}
   - {fileID: 7252935680214566833}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 2715381482916478216}
   - {fileID: 2715381482451061766}
   - {fileID: 2715381482575462134}
@@ -592,7 +579,6 @@ MonoBehaviour:
   - {fileID: 2715381481858225560}
   - {fileID: 2715381481932935783}
   - {fileID: 2715381482298587446}
-  - {fileID: 0}
   - {fileID: 2715381481399076038}
   - {fileID: 2715381481364481592}
   - {fileID: 2715381481668712524}

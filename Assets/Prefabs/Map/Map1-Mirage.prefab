@@ -918,7 +918,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7b8ccdd5d7ceb61449f9e1dbb4e63a26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1a0e939dfdc24975929e882d8e64cb0, type: 3}
   m_Color: {r: 1, g: 0.9271823, b: 0.25157225, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3007,19 +3007,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7249069674430778934, guid: 7ae68d1d18ea64b7d9cac497ffe3442c, type: 3}
   m_PrefabInstance: {fileID: 7252935679347237494}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7252935679899466135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 17527197463964736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0382d62fd493046a2b1552f3d476ba02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requestIndex: 1
 --- !u!114 &3227476451912700042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3034,6 +3021,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAfterCollect: 1
   condition: {fileID: 7252935679899466135}
+--- !u!114 &7252935679899466135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17527197463964736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0382d62fd493046a2b1552f3d476ba02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requestIndex: 1
 --- !u!1001 &7252935679361207297
 PrefabInstance:
   m_ObjectHideFlags: 0
