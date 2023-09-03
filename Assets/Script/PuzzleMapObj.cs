@@ -9,6 +9,7 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private int controlIndex = -1;
     [SerializeField] private bool blockObj;
     [FormerlySerializedAs("wallBlockObj")] [SerializeField] private bool isWallBlockObj;
+    [SerializeField] private bool isBoxObj;
     [SerializeField] private bool collectable;
     [SerializeField] private PuzzleMapObjBehavior beheavier;
     [SerializeField] private PuzzleMapObjBehavior passtiveBeheavier;
@@ -25,7 +26,11 @@ public class PuzzleMapObj : MonoBehaviour
     public bool BlockObj { get => blockObj; set => blockObj = value; }
     public bool IsWallBlockObj
     {
-        get => isWallBlockObj; set => isWallBlockObj = value;
+        get => isWallBlockObj;
+    }
+    public bool IsBoxBlockObj
+    {
+        get => isBoxObj; 
     }
 
     public bool CanControl(int controlIndex)
@@ -107,12 +112,6 @@ public class PuzzleMapObj : MonoBehaviour
     {
         escapeBehavier?.DoBehavior(this);
     }
-
-    public void BoxMerge()
-    {
-        mergeBehavier?.DoBehavior(this);
-    }
-    
     public void Fill()
     {
         fillBeheavier?.DoBehavior(this);
@@ -126,7 +125,26 @@ public class PuzzleMapObj : MonoBehaviour
         PuzzleManager.instance.CurrentMap.RemoveObj(this);
         Destroy(gameObject);
     }
-    
+
+    public void BoxMergeUp()
+    {
+        MergeMoveWithVector(Vector3.forward * PuzzleManager.GRID_SIZE);
+    }
+
+    public void BoxMergeDown()
+    {
+        MergeMoveWithVector(Vector3.back * PuzzleManager.GRID_SIZE);
+    }
+
+    public void BoxMergeLeft()
+    {
+        MergeMoveWithVector(Vector3.left * PuzzleManager.GRID_SIZE);
+    }
+
+    public void BoxMergeRight()
+    {
+        MergeMoveWithVector(Vector3.right * PuzzleManager.GRID_SIZE);
+    }
     public void MoveUp()
     {
         MoveWithVector(Vector3.forward * PuzzleManager.GRID_SIZE);
@@ -180,7 +198,7 @@ public class PuzzleMapObj : MonoBehaviour
         bool beBlock = false;
         foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
         {
-            if (current.BlockObj)
+            if (current.BlockObj && !current.IsBoxBlockObj)
             {
                 beBlock = true;
             }

@@ -2,21 +2,21 @@ public class MergeBehavior : PuzzleMapObjBehavior
 {
     public override void Up(PuzzleMapObj obj)
     {
-        obj.BoxMerge();
+        obj.BoxMergeUp();
     }
 
     public override void Down(PuzzleMapObj obj)
     {
-        obj.BoxMerge();
+        obj.BoxMergeDown();
     }
 
     public override void Left(PuzzleMapObj obj)
     {
-        obj.BoxMerge();
+        obj.BoxMergeLeft();
     }
 
     public override void Right(PuzzleMapObj obj)
     {
-        obj.BoxMerge();
+        obj.BoxMergeRight();
     }
 }
