@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class SingleBehavior : MonoBehaviour
 {
-    public abstract void DoBehavior();
+    public abstract void DoBehavior(PuzzleMapObj obj);
 }
