@@ -170,16 +170,14 @@ public class PuzzleMapObj : MonoBehaviour
 
     public void EscapeRight()
     {
-        if (!isMoving)
+        if (!duringAnim)
         {
-            isMoving = true;
+            duringAnim = true;
 
-            //Vector3 finalPos = transform.position + Vector3.right * PuzzleManager.GRID_SIZE;
             transform.DOMove(transform.position + Vector3.right * PuzzleManager.GRID_SIZE, 1f)
                 .OnComplete(() =>
                 {
-                    //transform.position = finalPos;
-                    isMoving = false;
+                    duringAnim = false;
                 });
         }
     }
