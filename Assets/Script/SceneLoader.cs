@@ -9,10 +9,10 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] string sceneName;
 
 
-    private void OnEnable()
-    {
-        PreloadScene(sceneName);
-    }
+    //private void OnEnable()
+    //{
+    //    PreloadScene(sceneName);
+    //}
 
     // 预加载指定场景但不立即加载
     public void PreloadScene(string sceneName)
