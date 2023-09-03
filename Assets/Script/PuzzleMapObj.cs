@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -164,9 +165,13 @@ public class PuzzleMapObj : MonoBehaviour
         MoveWithVector(Vector3.right * PuzzleManager.GRID_SIZE);
     }
 
-    /// <summary>
-    /// TODO:
-    /// </summary>
+    public void EscapeRight()
+    {
+        transform.DOMove( transform.position + Vector3.left * PuzzleManager.GRID_SIZE, 1f);
+        transform.DOMove( transform.position + Vector3.right * PuzzleManager.GRID_SIZE, 1f);
+        //MoveWithVector(Vector3.right * PuzzleManager.GRID_SIZE);
+    }
+
     public void JumpBack()
     {
         JumpWithVector(Vector3.left * PuzzleManager.GRID_SIZE);
