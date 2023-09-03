@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class PuzzleMapObj : MonoBehaviour
 {
     [SerializeField] private int controlIndex = -1;
     [SerializeField] private bool blockObj;
-    [SerializeField] private bool wallBlockObj;
+    [FormerlySerializedAs("wallBlockObj")] [SerializeField] private bool isWallBlockObj;
     [SerializeField] private bool collectable;
     [SerializeField] private PuzzleMapObjBehavior beheavier;
     [SerializeField] private PuzzleMapObjBehavior passtiveBeheavier;
@@ -17,9 +18,9 @@ public class PuzzleMapObj : MonoBehaviour
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
-    public bool WallBlockObj
+    public bool IsWallBlockObj
     {
-        get => wallBlockObj; set => wallBlockObj = value;
+        get => isWallBlockObj; set => isWallBlockObj = value;
     }
 
     public bool CanControl(int controlIndex)
@@ -144,6 +145,11 @@ public class PuzzleMapObj : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void JumpWithVector(Direction dir)
+    {
+        
     }
     public void PushWithVector(Direction dir)
     {

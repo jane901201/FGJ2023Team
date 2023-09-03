@@ -141,7 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlIndex: -1
   blockObj: 1
+  wallBlockObj: 1
   collectable: 0
   beheavier: {fileID: 0}
   passtiveBeheavier: {fileID: 0}
+  undoBeheavier: {fileID: 0}
+  fallBeheavier: {fileID: 0}
   powerUpFunction: {fileID: 0}
