@@ -9,6 +9,7 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private int controlIndex = -1;
     [SerializeField] private bool blockObj;
     [FormerlySerializedAs("wallBlockObj")] [SerializeField] private bool isWallBlockObj;
+    [SerializeField] private bool isBoxObj;
     [SerializeField] private bool collectable;
     [SerializeField] private PuzzleMapObjBehavior beheavier;
     [SerializeField] private PuzzleMapObjBehavior passtiveBeheavier;
@@ -18,13 +19,18 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private SingleBehavior periodBehavier;
     [SerializeField] private float periodBehavierInterial;
     [SerializeField] private SingleBehavior escapeBehavier;
+    [SerializeField] private SingleBehavior mergeBehavier;
     [SerializeField] private CollectEvent powerUpFunction;
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
     public bool IsWallBlockObj
     {
-        get => isWallBlockObj; set => isWallBlockObj = value;
+        get => isWallBlockObj;
+    }
+    public bool IsBoxBlockObj
+    {
+        get => isBoxObj; 
     }
 
     public bool CanControl(int controlIndex)
@@ -119,7 +125,26 @@ public class PuzzleMapObj : MonoBehaviour
         PuzzleManager.instance.CurrentMap.RemoveObj(this);
         Destroy(gameObject);
     }
-    
+
+    public void BoxMergeUp()
+    {
+        MergeMoveWithVector(Vector3.forward * PuzzleManager.GRID_SIZE);
+    }
+
+    public void BoxMergeDown()
+    {
+        MergeMoveWithVector(Vector3.back * PuzzleManager.GRID_SIZE);
+    }
+
+    public void BoxMergeLeft()
+    {
+        MergeMoveWithVector(Vector3.left * PuzzleManager.GRID_SIZE);
+    }
+
+    public void BoxMergeRight()
+    {
+        MergeMoveWithVector(Vector3.right * PuzzleManager.GRID_SIZE);
+    }
     public void MoveUp()
     {
         MoveWithVector(Vector3.forward * PuzzleManager.GRID_SIZE);
@@ -154,6 +179,32 @@ public class PuzzleMapObj : MonoBehaviour
             {
                 beBlock = true;
             }
+        }
+        if (!beBlock)
+        {
+            transform.position += moveVector;
+            if (collectable)
+            {
+                foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+                {
+                    current.BeCollect(this);
+                }
+            }
+        }
+    }
+    public void MergeMoveWithVector(Vector3 moveVector)
+    {
+        Vector3 moveTarget = transform.position + moveVector;
+        bool beBlock = false;
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+        {
+            if (current.BlockObj)
+            {
+                beBlock = true;
+            }
+
+            if (current.IsBoxBlockObj)
+                beBlock = false;
         }
         if (!beBlock)
         {
