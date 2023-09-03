@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecbd4e8a240fa478dade2c15e64708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMap: {fileID: 40643041}
+  stageMaps: []
 --- !u!4 &40643043
 Transform:
   m_ObjectHideFlags: 0
@@ -10782,7 +10782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecbd4e8a240fa478dade2c15e64708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMap: {fileID: 1403227905}
+  stageMaps:
+  - {fileID: 1403227905}
 --- !u!4 &1025153818
 Transform:
   m_ObjectHideFlags: 0
@@ -15639,7 +15640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fecbd4e8a240fa478dade2c15e64708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMap: {fileID: 1580473317}
+  stageMaps: []
 --- !u!1001 &1585957616
 PrefabInstance:
   m_ObjectHideFlags: 0

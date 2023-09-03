@@ -8,36 +8,20 @@ public class PuzzleManager : MonoBehaviour
 
     public static PuzzleManager instance;
 
-    [SerializeField] private PuzzleMap defaultMap;
+    [SerializeField] private List<PuzzleMap> stageMaps;
 
-    private PuzzleMap currentMap;
+    private int currentStage;
 
-    public PuzzleMap CurrentMap { get => currentMap; set => currentMap = value; }
+    public PuzzleMap CurrentMap { get => stageMaps[currentStage]; }
 
     private void Start()
     {
         instance = this;
-        CurrentMap = defaultMap;
     }
-    public void Up()
+    public void NextStage()
     {
-        CurrentMap.Up();
+        stageMaps[currentStage].gameObject.SetActive(false);
+        currentStage++;
+        stageMaps[currentStage].gameObject.SetActive(true);
     }
-    public void Down()
-    {
-        CurrentMap.Down();
-    }
-    public void Left()
-    {
-        CurrentMap.Left();
-    }
-    public void Right()
-    {
-        CurrentMap.Right();
-    }
-    public void SetControlIndex(int index)
-    {
-        CurrentMap.SetControlIndex(index);
-    }
-
 }
