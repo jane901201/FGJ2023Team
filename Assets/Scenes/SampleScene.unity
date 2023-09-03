@@ -331,7 +331,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 4
+  field of view: 6
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -357,7 +357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184490647}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -16.5, y: 176, z: 2.7}
+  m_LocalPosition: {x: -115.01811, y: 26.653807, z: -2.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -954,6 +954,9 @@ MonoBehaviour:
   randomScale: 1
   maxScale: {x: 1.5, y: 1, z: 1.5}
   minScale: {x: 0.6, y: 1, z: 0.6}
+  randomRotation: 1
+  maxRot: 30
+  minRot: -30
   spawnHolder: {fileID: 1795012105}
 --- !u!65 &383473098
 BoxCollider:
@@ -1727,8 +1730,6 @@ MonoBehaviour:
   stageMaps:
   - {fileID: 7252935679338510141, guid: 3cb90bb2e91617c44ac2d7a25548d304, type: 3}
   - {fileID: 7252935679338510141, guid: bf4e8967b87cceb4ab723f93fe17a427, type: 3}
-  - {fileID: 7252935679338510141, guid: e07ecf95211fa8c43a92bb1826b9833d, type: 3}
-  - {fileID: 7252935679338510141, guid: 9eb8a2a567bfcc944a714d69268189f9, type: 3}
   - {fileID: 7252935679338510141, guid: 3942514f34747a74db1defdfe6b7c43f, type: 3}
   upObj: {fileID: 7847259196311741946}
   downObj: {fileID: 1139884033}

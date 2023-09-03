@@ -625,7 +625,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6fc5be17a7c31b6439fcdf0ddb4b2a6d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 218864bdb6e6f4554a2b4621f97bcf17, type: 3}
   m_Color: {r: 0.97164035, g: 1, b: 0.43921566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1204,7 +1204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7752431317785199462}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 6.6000004, y: 45, z: 4.9}
+  m_LocalPosition: {x: 6.91, y: 45, z: 4.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1664229181528665411}
@@ -1232,7 +1232,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 6
+    FieldOfView: 13
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -10635,7 +10635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb880a9d3111b4430ab5dae8efe8f5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyAfterCollect: 0
+  destroyAfterCollect: 1
   condition: {fileID: 0}
   enableTarget: 2
 --- !u!1001 &7252935679216705712
