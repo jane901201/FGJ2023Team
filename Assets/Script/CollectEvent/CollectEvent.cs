@@ -5,11 +5,13 @@ using UnityEngine;
 public class CollectEvent : MonoBehaviour
 {
     [SerializeField] private bool destroyAfterCollect;
-    [SerializeField] private PuzzleObjCondition condition; 
+    [SerializeField] private PuzzleObjCondition condition;
+
+    private bool enable = true;
 
     public void OnCollect(PuzzleMapObj collector, PuzzleMapObj obj)
     {
-        if (condition == null || condition.CheckObj(collector))
+        if (enable && (condition == null || condition.CheckObj(collector)))
         {
             DoCollect(collector, obj);
         }
@@ -20,5 +22,9 @@ public class CollectEvent : MonoBehaviour
         {
             obj.DestroyInstance();
         }
+    }
+    public void DisableEvent()
+    {
+        enable = false;
     }
 }
