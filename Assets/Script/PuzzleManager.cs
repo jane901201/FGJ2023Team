@@ -9,20 +9,28 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager instance;
 
     [SerializeField] private List<PuzzleMap> stageMaps;
+    [SerializeField] private GameObject upObj;
+    [SerializeField] private GameObject downObj;
+    [SerializeField] private GameObject undoObj;
+    [SerializeField] private GameObject charObj;
+    [SerializeField] private GameObject goalObj;
+
 
     private int currentStage;
 
-    public PuzzleMap CurrentMap { get => stageMaps[currentStage]; }
+    public PuzzleMap currentMap;
+    public PuzzleMap CurrentMap { get => currentMap; }
 
     private void Start()
     {
         instance = this;
+        currentMap = Instantiate(stageMaps[currentStage]);
     }
     public void NextStage()
     {
-        stageMaps[currentStage].gameObject.SetActive(false);
+        Destroy(currentMap);
         currentStage++;
-        stageMaps[currentStage].gameObject.SetActive(true);
+        currentMap = Instantiate(stageMaps[currentStage]);
     }
     public void Up()
     {
@@ -48,5 +56,24 @@ public class PuzzleManager : MonoBehaviour
     {
         CurrentMap.SetControlIndex(index);
     }
-
+    public void EnableUp()
+    {
+        upObj.SetActive(true);
+    }
+    public void EnableDown()
+    {
+        downObj.SetActive(true);
+    }
+    public void EnableChar()
+    {
+        charObj.SetActive(true);
+    }
+    public void EnableGoal()
+    {
+        goalObj.SetActive(true);
+    }
+    public void EnableUndo()
+    {
+        undoObj.SetActive(true);
+    }
 }
