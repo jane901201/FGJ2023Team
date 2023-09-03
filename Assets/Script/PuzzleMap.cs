@@ -91,6 +91,17 @@ public class PuzzleMap : MonoBehaviour
         }
         UpdateObjList();
     }
+    public void Undo()
+    {
+        foreach (PuzzleMapObj current in objs)
+        {
+            if (current.CanControl(controlIndex) && current.gameObject.activeInHierarchy)
+            {
+                current.Undo();
+            }
+        }
+        UpdateObjList();
+    }
     #endregion
 #if UNITY_EDITOR
     [ContextMenu("Update Grids")]

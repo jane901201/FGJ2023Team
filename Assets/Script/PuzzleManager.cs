@@ -8,16 +8,21 @@ public class PuzzleManager : MonoBehaviour
 
     public static PuzzleManager instance;
 
-    [SerializeField] private PuzzleMap defaultMap;
+    [SerializeField] private List<PuzzleMap> stageMaps;
 
-    private PuzzleMap currentMap;
+    private int currentStage;
 
-    public PuzzleMap CurrentMap { get => currentMap; set => currentMap = value; }
+    public PuzzleMap CurrentMap { get => stageMaps[currentStage]; }
 
     private void Start()
     {
         instance = this;
-        CurrentMap = defaultMap;
+    }
+    public void NextStage()
+    {
+        stageMaps[currentStage].gameObject.SetActive(false);
+        currentStage++;
+        stageMaps[currentStage].gameObject.SetActive(true);
     }
     public void Up()
     {
@@ -35,7 +40,11 @@ public class PuzzleManager : MonoBehaviour
     {
         CurrentMap.Right();
     }
-    public void SetControlIndex(int index)
+    public void Undo()
+    {
+        CurrentMap.Undo();
+    }
+    public void SwitchControl(int index)
     {
         CurrentMap.SetControlIndex(index);
     }
