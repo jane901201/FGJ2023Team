@@ -23,6 +23,9 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private SingleBehavior mergeBehavier;
     [SerializeField] private CollectEvent powerUpFunction;
     [SerializeField] private Trail jumpTrail;
+    
+    private bool isMoving = false;
+
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
     public bool BlockObj { get => blockObj; set => blockObj = value; }
@@ -166,9 +169,18 @@ public class PuzzleMapObj : MonoBehaviour
 
     public void EscapeRight()
     {
-        transform.DOMove( transform.position + Vector3.left * PuzzleManager.GRID_SIZE, 1f);
-        transform.DOMove( transform.position + Vector3.right * PuzzleManager.GRID_SIZE, 1f);
-        //MoveWithVector(Vector3.right * PuzzleManager.GRID_SIZE);
+        if (!isMoving)
+        {
+            isMoving = true;
+
+            //Vector3 finalPos = transform.position + Vector3.right * PuzzleManager.GRID_SIZE;
+            transform.DOMove(transform.position + Vector3.right * PuzzleManager.GRID_SIZE, 1f)
+                .OnComplete(() =>
+                {
+                    //transform.position = finalPos;
+                    isMoving = false;
+                });
+        }
     }
 
     public void JumpBack()
