@@ -16,6 +16,7 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private SingleBehavior fallBeheavier;
     [SerializeField] private SingleBehavior fillBeheavier;
     [SerializeField] private SingleBehavior escapeBehavier;
+    [SerializeField] private SingleBehavior mergeBehavier;
     [SerializeField] private CollectEvent powerUpFunction;
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
@@ -104,6 +105,12 @@ public class PuzzleMapObj : MonoBehaviour
     {
         escapeBehavier?.DoBehavior(this);
     }
+
+    public void BoxMerge()
+    {
+        mergeBehavier?.DoBehavior(this);
+    }
+    
     public void Fill()
     {
         fillBeheavier?.DoBehavior(this);
@@ -143,6 +150,29 @@ public class PuzzleMapObj : MonoBehaviour
         JumpWithVector(Vector3.left * PuzzleManager.GRID_SIZE);
     }
     public void MoveWithVector(Vector3 moveVector)
+    {
+        Vector3 moveTarget = transform.position + moveVector;
+        bool beBlock = false;
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+        {
+            if (current.BlockObj)
+            {
+                beBlock = true;
+            }
+        }
+        if (!beBlock)
+        {
+            transform.position += moveVector;
+            if (collectable)
+            {
+                foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+                {
+                    current.BeCollect(this);
+                }
+            }
+        }
+    }
+    public void MergeMoveWithVector(Vector3 moveVector)
     {
         Vector3 moveTarget = transform.position + moveVector;
         bool beBlock = false;
