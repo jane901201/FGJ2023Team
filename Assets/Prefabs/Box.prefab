@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 2171684214238196283}
   - component: {fileID: 6577660783052199138}
   - component: {fileID: 1209152542593560532}
+  - component: {fileID: 4149929252715307877}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -205,12 +206,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlIndex: -1
   blockObj: 1
+  isWallBlockObj: 0
+  isBoxObj: 1
   collectable: 0
   beheavier: {fileID: 2171684214238196283}
   passtiveBeheavier: {fileID: 1209152542593560532}
   undoBeheavier: {fileID: 0}
   fallBeheavier: {fileID: 677104030592862034}
   fillBeheavier: {fileID: 0}
+  periodBehavier: {fileID: 0}
+  periodBehavierInterial: 0
+  escapeBehavier: {fileID: 0}
+  mergeBehavier: {fileID: 0}
   powerUpFunction: {fileID: 0}
 --- !u!114 &2171684214238196283
 MonoBehaviour:
@@ -226,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviors:
   - {fileID: 6577660783052199138}
-  - {fileID: 1209152542593560532}
+  - {fileID: 4149929252715307877}
 --- !u!114 &6577660783052199138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +256,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14d6d6570474d4246851af73756381b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4149929252715307877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7249069674430778934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5aef24179284639bc683560be33ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7249069675336679875
