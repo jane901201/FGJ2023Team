@@ -15,6 +15,7 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private SingleBehavior undoBeheavier;
     [SerializeField] private SingleBehavior fallBeheavier;
     [SerializeField] private SingleBehavior fillBeheavier;
+    [SerializeField] private SingleBehavior escapeBehavier;
     [SerializeField] private CollectEvent powerUpFunction;
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
@@ -97,6 +98,11 @@ public class PuzzleMapObj : MonoBehaviour
     public void Fall()
     {
         fallBeheavier?.DoBehavior(this);
+    }
+
+    public void Escape()
+    {
+        escapeBehavier?.DoBehavior(this);
     }
     public void Fill()
     {
