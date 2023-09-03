@@ -798,8 +798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047921a3d41b16c44930b4061b14d92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDistance: 3
-  shakeSpeed: 5
+  shakeDistance: 30
+  shakeSpeed: 10
   randomSeed: 0
   startColor: {r: 0.9294118, g: 0.69803923, b: 0.2784314, a: 1}
   endColor: {r: 0, g: 1, b: 0.9690962, a: 1}
@@ -969,18 +969,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1452550264}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: PreloadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: SampleScene
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1413559597}
         m_TargetAssemblyTypeName: DelayedEventTrigger, Assembly-CSharp
         m_MethodName: StartCountDown
@@ -1114,8 +1102,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -169, y: 189}
-  m_SizeDelta: {x: 194.1088, y: 195.6383}
+  m_AnchoredPosition: {x: -94, y: 160}
+  m_SizeDelta: {x: 116.4536, y: 117.3713}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588749231
 MonoBehaviour:
@@ -1314,8 +1302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -24.451}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36, y: 191}
-  m_SizeDelta: {x: 194.1088, y: 195.6383}
+  m_AnchoredPosition: {x: 47, y: 160}
+  m_SizeDelta: {x: 116.4536, y: 117.3713}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774857133
 MonoBehaviour:
@@ -1499,7 +1487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 82b69b22e669b7346bc53ce6b7626516, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a0038ef049e3324c8ff93ec8c326b1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
