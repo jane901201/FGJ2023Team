@@ -15,6 +15,8 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private SingleBehavior undoBeheavier;
     [SerializeField] private SingleBehavior fallBeheavier;
     [SerializeField] private SingleBehavior fillBeheavier;
+    [SerializeField] private SingleBehavior periodBehavier;
+    [SerializeField] private float periodBehavierInterial;
     [SerializeField] private SingleBehavior escapeBehavier;
     [SerializeField] private CollectEvent powerUpFunction;
 
