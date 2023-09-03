@@ -33,6 +33,11 @@ public class PuzzleManager : MonoBehaviour
         currentStage++;
         currentMap = Instantiate(stageMaps[currentStage]);
     }
+    public void ResteStage()
+    {
+        Destroy(currentMap.gameObject);
+        currentMap = Instantiate(stageMaps[currentStage]);
+    }
     public void Up()
     {
         CurrentMap.Up();
