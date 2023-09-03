@@ -29,7 +29,7 @@ public class PuzzleManager : MonoBehaviour
     public void NextStage()
     {
         levelClearObj.SetActive(false);
-        Destroy(currentMap);
+        Destroy(currentMap.gameObject);
         currentStage++;
         currentMap = Instantiate(stageMaps[currentStage]);
     }
