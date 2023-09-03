@@ -6,7 +6,7 @@ public class SpawnObjects : MonoBehaviour
 {
     [SerializeField] private bool spawnAlongY = false;
     [SerializeField] private int ObjectNumbers = 10;
-    [SerializeField]  GameObject[] objectsToSpawn;  // fill in editor
+    [SerializeField] GameObject[] objectsToSpawn;  // fill in editor
     private GameObject rangeBorder;
     private float rangeXmin, rangeXmax, rangeZmin, rangeZmax;//先宣告產生物件的範圍用變數
 
@@ -14,6 +14,12 @@ public class SpawnObjects : MonoBehaviour
 
     [SerializeField] bool randomScale;//亂數調整物件Scale用
     [SerializeField] Vector3 maxScale, minScale;
+
+    [SerializeField] bool randomRotation = true;
+    [SerializeField] float maxRot = 30;
+    [SerializeField] float minRot = -30;
+
+
     //public bool isCollide;
     public Transform spawnHolder;
 
@@ -77,6 +83,12 @@ public class SpawnObjects : MonoBehaviour
         {
             ObjHere1.transform.localScale = new Vector3(Random.Range(minScale.x, maxScale.x), Random.Range(minScale.y, maxScale.y), Random.Range(minScale.z, maxScale.z));
             ObjHere2.transform.localScale = new Vector3(Random.Range(minScale.x, maxScale.x), Random.Range(minScale.y, maxScale.y), Random.Range(minScale.z, maxScale.z));
+        }
+
+        if (randomRotation)
+        {
+            ObjHere1.transform.rotation = Quaternion.Euler(0, Random.Range(minRot, maxRot), 0);
+            ObjHere2.transform.rotation = Quaternion.Euler(0, Random.Range(minRot, maxRot), 0);
         }
     }
 }
