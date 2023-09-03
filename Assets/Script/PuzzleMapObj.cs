@@ -123,6 +123,14 @@ public class PuzzleMapObj : MonoBehaviour
     {
         MoveWithVector(Vector3.right * PuzzleManager.GRID_SIZE);
     }
+
+    /// <summary>
+    /// TODO:
+    /// </summary>
+    public void JumpBack(Vector3 dir)
+    {
+        JumpWithVector(dir * -1 * PuzzleManager.GRID_SIZE);
+    }
     public void MoveWithVector(Vector3 moveVector)
     {
         Vector3 moveTarget = transform.position + moveVector;
@@ -146,10 +154,36 @@ public class PuzzleMapObj : MonoBehaviour
             }
         }
     }
-
-    public void JumpWithVector(Direction dir)
+    public void JumpWithVector(Vector3 moveVector)
     {
-        
+        Vector3 checkMiddlePath = transform.position + moveVector;
+        Vector3 moveTarget = transform.position + moveVector * 2;
+        bool beBlock = false;
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(checkMiddlePath))
+        {
+            if (current.IsWallBlockObj)
+            {
+                beBlock = true;
+            }
+        }
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+        {
+            if (current.IsWallBlockObj)
+            {
+                beBlock = true;
+            }
+        }
+        if (!beBlock)
+        {
+            transform.position += moveVector * 2;
+            if (collectable)
+            {
+                foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
+                {
+                    current.BeCollect(this);
+                }
+            }
+        }
     }
     public void PushWithVector(Direction dir)
     {

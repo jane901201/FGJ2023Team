@@ -17,6 +17,10 @@ public class PlayerAnim : MonoBehaviour
 
     [SerializeField] Sprite walkRight1, walkRight2;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public Vector3 PlayerDir { get; set; } = Vector3.left;
     public void MoveUp()
     {
         if (handeler) charaSprite.sprite = walkUp1;
@@ -33,6 +37,7 @@ public class PlayerAnim : MonoBehaviour
 
     public void MoveLeft()
     {
+        PlayerDir = Vector3.left;
         if (handeler) charaSprite.sprite = walkLeft1;
         else charaSprite.sprite = walkLeft2;
         handeler = !handeler;
@@ -40,10 +45,14 @@ public class PlayerAnim : MonoBehaviour
 
     public void MoveRight()
     {
+        PlayerDir = Vector3.right;
         if (handeler) charaSprite.sprite = walkRight1;
         else charaSprite.sprite = walkRight2;
         handeler = !handeler;
     }
 
-
+    public void JumpBack()
+    {
+        //TODO:等 Nori 接動畫
+    }
 }
