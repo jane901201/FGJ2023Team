@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -31,7 +32,14 @@ public class PuzzleManager : MonoBehaviour
         levelClearObj.SetActive(false);
         Destroy(currentMap.gameObject);
         currentStage++;
-        currentMap = Instantiate(stageMaps[currentStage]);
+        if (currentStage < stageMaps.Count)
+        {
+            currentMap = Instantiate(stageMaps[currentStage]);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
     public void ResteStage()
     {
