@@ -198,10 +198,13 @@ public class PuzzleMapObj : MonoBehaviour
         bool beBlock = false;
         foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
         {
-            if (current.BlockObj && !current.IsBoxBlockObj)
+            if (current.BlockObj)
             {
                 beBlock = true;
             }
+
+            if (current.IsBoxBlockObj)
+                beBlock = false;
         }
         if (!beBlock)
         {

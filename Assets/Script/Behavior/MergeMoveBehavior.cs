@@ -1,4 +1,4 @@
-public class MergeBehavior : PuzzleMapObjBehavior
+public class MergeMoveBehavior : PuzzleMapObjBehavior
 {
     public override void Up(PuzzleMapObj obj)
     {
