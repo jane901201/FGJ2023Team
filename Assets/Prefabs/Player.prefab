@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 8876337449391633095}
   - component: {fileID: 1680838852}
   - component: {fileID: 2371901927914520583}
+  - component: {fileID: 3997713111982850035}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -235,6 +236,8 @@ MonoBehaviour:
   passtiveBeheavier: {fileID: 8876337449391633095}
   undoBeheavier: {fileID: 2371901927914520583}
   fallBeheavier: {fileID: 0}
+  fillBeheavier: {fileID: 0}
+  escapeBehavier: {fileID: 3997713111982850035}
   powerUpFunction: {fileID: 0}
 --- !u!114 &2079151988135201981
 MonoBehaviour:
@@ -310,3 +313,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnim: {fileID: 1680838852}
+--- !u!114 &3997713111982850035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112686265296245541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d1e08114c34ccebc152aac0a217c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

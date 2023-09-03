@@ -14,7 +14,7 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private GameObject undoObj;
     [SerializeField] private GameObject charObj;
     [SerializeField] private GameObject goalObj;
-
+    [SerializeField] private GameObject levelClearObj;
 
     private int currentStage;
 
@@ -28,7 +28,8 @@ public class PuzzleManager : MonoBehaviour
     }
     public void NextStage()
     {
-        Destroy(currentMap);
+        levelClearObj.SetActive(false);
+        Destroy(currentMap.gameObject);
         currentStage++;
         currentMap = Instantiate(stageMaps[currentStage]);
     }
@@ -75,5 +76,9 @@ public class PuzzleManager : MonoBehaviour
     public void EnableUndo()
     {
         undoObj.SetActive(true);
+    }
+    public void LevelClear()
+    {
+        levelClearObj.SetActive(true);
     }
 }

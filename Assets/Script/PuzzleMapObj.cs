@@ -15,6 +15,7 @@ public class PuzzleMapObj : MonoBehaviour
     [SerializeField] private SingleBehavior undoBeheavier;
     [SerializeField] private SingleBehavior fallBeheavier;
     [SerializeField] private SingleBehavior fillBeheavier;
+    [SerializeField] private SingleBehavior escapeBehavier;
     [SerializeField] private CollectEvent powerUpFunction;
 
     public int ControlIndex { get => controlIndex; set => controlIndex = value; }
@@ -98,6 +99,11 @@ public class PuzzleMapObj : MonoBehaviour
     {
         fallBeheavier?.DoBehavior(this);
     }
+
+    public void Escape()
+    {
+        escapeBehavier?.DoBehavior(this);
+    }
     public void Fill()
     {
         fillBeheavier?.DoBehavior(this);
@@ -161,10 +167,18 @@ public class PuzzleMapObj : MonoBehaviour
     }
     public void JumpWithVector(Vector3 moveVector)
     {
-        Vector3 checkMiddlePath = transform.position + moveVector;
-        Vector3 moveTarget = transform.position + moveVector * 2;
+        Vector3 checkMiddlePath1 = transform.position + moveVector;
+        Vector3 checkMiddlePath2 = transform.position + moveVector * 2;
+        Vector3 moveTarget = transform.position + moveVector * 3;
         bool beBlock = false;
-        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(checkMiddlePath))
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(checkMiddlePath1))
+        {
+            if (current.IsWallBlockObj)
+            {
+                beBlock = true;
+            }
+        }
+        foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(checkMiddlePath2))
         {
             if (current.IsWallBlockObj)
             {
@@ -180,7 +194,7 @@ public class PuzzleMapObj : MonoBehaviour
         }
         if (!beBlock)
         {
-            transform.position += moveVector * 2;
+            transform.position += moveVector * 3;
             if (collectable)
             {
                 foreach (PuzzleMapObj current in PuzzleManager.instance.CurrentMap.FindObjs(moveTarget))
